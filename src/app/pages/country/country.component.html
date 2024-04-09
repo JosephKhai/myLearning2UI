@@ -1,0 +1,37 @@
+<div>
+    <h1>Country</h1>
+</div>
+
+
+<table mat-table [dataSource]="countries" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell  *matHeaderCellDef class="header-align-center"> Id </th>
+        <td mat-cell *matCellDef="let country"> {{country.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="header-align-center"> Name </th>
+        <td mat-cell *matCellDef="let country"> {{country.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isO2">
+        <th mat-header-cell *matHeaderCellDef class="header-align-center"> ISO2 </th>
+        <td mat-cell *matCellDef="let country"> {{country.isO2}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isO3">
+        <th mat-header-cell *matHeaderCellDef class="header-align-center"> ISO3 </th>
+        <td mat-cell *matCellDef="let country"> {{country.isO3}} </td>
+    </ng-container>
+
+     <!-- Define the header row -->
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+     <!-- Define the data rows -->
+     <tr mat-row *matRowDef="let country; columns: displayedColumns;"></tr>
+
+</table>
+
+<!-- Pagination directive -->
+<mat-paginator [hidden]="!countries" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
