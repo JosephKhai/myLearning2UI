@@ -17,6 +17,8 @@ import { CountryService } from './services/country.service';
 import { CityService } from './services/city.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PagesModule } from './pages/pages.module';
+import { AccountModule } from './account/account.module';
 
 
 
@@ -25,8 +27,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    CityComponent,
-    CountryComponent,
 
   ],
   imports: [
@@ -39,11 +39,17 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    MatTableModule,
-    MatPaginatorModule
-    
+    PagesModule,
+    AccountModule,
 
   ],
+  
+  exports: [
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+  ],
+
   providers: [CityService, CountryService ],
   bootstrap: [AppComponent]
 })

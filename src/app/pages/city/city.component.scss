@@ -2,9 +2,14 @@ table {
     width: 100%;
 }
 
-.header-align-center{
-    text-align-last: center;
-    color: black;
+
+th {
+    color:black;
     font-weight: bold;
-    font-size: larger;
+}
+
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
 }
