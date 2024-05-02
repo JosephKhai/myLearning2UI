@@ -1,15 +1,21 @@
-table {
+table.mat-table {
     width: 100%;
 }
-
-
-th {
-    color:black;
-    font-weight: bold;
-}
-
 
 .mat-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+
+.mat-sort-header-container {
+    align-items: center;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
 }

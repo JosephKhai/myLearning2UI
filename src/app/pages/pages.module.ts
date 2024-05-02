@@ -7,12 +7,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { CityEditComponent } from './city/city.edit/city.edit.component';
 
 
 @NgModule({
   declarations: [
     CityComponent,
-    CountryComponent
+    CountryComponent,
+    CityEditComponent
   ],
   imports: [
     CommonModule,
