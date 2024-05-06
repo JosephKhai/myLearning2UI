@@ -3,11 +3,11 @@ import { City } from "./City";
 
 
 export interface Country {
-    Id: number;
-    Name: string;
-    ISO2: string;
-    ISO3: string;
-    City: City[];
+    id: number;
+    name: string;
+    iso2: string;
+    iso3: string;
+    city: City[];
 }
 
 export abstract class CountryData {

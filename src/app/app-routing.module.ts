@@ -3,11 +3,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { CityComponent } from "./pages/city/city.component";
 import { CountryComponent } from "./pages/country/country.component";
+import { CityEditComponent } from "./pages/city/city.edit/city.edit.component";
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, pathMatch: 'full'},
-    { path: 'city', component: CityComponent},
-    { path: 'country', component: CountryComponent}
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'cities', component: CityComponent },
+    { path: 'city/:id', component: CityEditComponent },
+    { path: "city", component: CityEditComponent },
+    { path: 'country', component: CountryComponent }
 
 
 ]
@@ -22,4 +25,4 @@ const routes: Routes = [
 
 })
 
-export class AppRoutingModule{}
+export class AppRoutingModule { }

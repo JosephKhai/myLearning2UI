@@ -2,12 +2,12 @@ import { Observable } from "rxjs";
 import { Country } from "./Country";
 
 export interface City {
-    Id: number;
-    Name: string;
-    Lat: number;
-    Lon: number;
-    CountryId: number;
-    Country: Country
+    id: number;
+    name: string;
+    lat: number;
+    lon: number;
+    countryId: number;
+    country: Country
     
 }
 

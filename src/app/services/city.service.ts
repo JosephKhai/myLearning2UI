@@ -45,6 +45,23 @@ export class CityService implements OnInit {
 
   }
 
+  getById(id: number): Observable<City> {
+    return this.http.get<City>(environment.baseUrl + 'api/city/' + id);
+  }
+  
+
+  update(city: City): Observable<City> {
+    return this.http.put<City>(environment.baseUrl + 'api/city/update/' + city.id, city);
+  }
+
+  create(city: City): Observable<City> {
+    return this.http.post<City>(environment.baseUrl + 'api/city/create', city);
+  }
+
+  isDuplicateCity(city: City): Observable<City> {
+    return this.http.post<City>(environment.baseUrl + 'api/city/IsDuplicate', city);
+  }
+
 
 }
 

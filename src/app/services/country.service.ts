@@ -18,8 +18,8 @@ export class CountryService implements OnInit {
   }
 
 
-  getCountry(): Observable<Country[]> {
-    return this.http.get<Country[]>(environment.baseUrl + 'api/country');
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>(environment.baseUrl + 'api/country/getall');
   }
 
   getData(
