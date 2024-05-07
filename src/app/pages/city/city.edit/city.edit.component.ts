@@ -49,13 +49,17 @@ export class CityEditComponent implements OnInit {
 
       var city = <City>{};
       city.id = (this.id) ? this.id : 0;
-      city.name = this.form.controls['name'].value;
-      city.lat = this.form.controls['lat'].value;
-      city.lon = this.form.controls['lon'].value;
-      city.countryId = this.form.controls['countryId'].value;
+      city.name = this.form.value.name;
+      city.lat = this.form.value.lat;
+      city.lon = this.form.value.lon;
+      city.countryId = this.form.value.countryId;
 
       return this.cityService.isDuplicateCity(city).pipe(map(result => {
+
+        console.log("Is Duplicate City: " + result)
+
         return (result ? { isDuplicateCity: true } : null);
+
       }));
 
     }
@@ -73,7 +77,7 @@ export class CityEditComponent implements OnInit {
     if (this.id) {
       // EDIT MODE
 
-      this.cityService.getById(Number(this.id)).subscribe(
+      this.cityService.getCityById(Number(this.id)).subscribe(
         (data) => {
           this.city = data;
           this.title = "Edit " + this.city.name;
@@ -108,6 +112,7 @@ export class CityEditComponent implements OnInit {
 
 
   onSubmit() {
+
     var city = (this.id) ? this.city : <City>{};
     if (city) {
       city.name = this.form.value.name;
@@ -129,18 +134,24 @@ export class CityEditComponent implements OnInit {
 
       } else {
         //ADD NEW MODE
-        this.cityService.create(city).subscribe(
-          (data) => {
 
-            console.log("City " + data?.id + " has been created. ");
+        if (this.form.valid) {
 
-            this.router.navigate(['/cities']);
+          this.cityService.create(city).subscribe(
+            (data) => {
 
-          }, error => {
-            console.log(error);
-          }
+              console.log("City " + data?.id + " has been created. ");
 
-        )
+              this.router.navigate(['/cities']);
+
+            }, error => {
+              console.log(error);
+            }
+
+          )
+
+        }
+
       }
 
     }

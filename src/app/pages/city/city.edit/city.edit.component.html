@@ -5,7 +5,7 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-        <mat-error *ngIf="form.invalid && form.hasError('isDuplicateCity')">
+        <mat-error *ngIf="form.invalid && form.hasError('isDuplicateCity') && !this.id">
             <strong>ERROR</strong>
             A city with the same <i>name</i>, <i>lat</i>, <i>lon</i> and <i>country</i> already exists.
         </mat-error>

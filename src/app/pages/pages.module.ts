@@ -11,13 +11,15 @@ import { CityEditComponent } from './city/city.edit/city.edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatSelectModule } from '@angular/material/select';
+import { CountryEditComponent } from './country/country.edit/country.edit.component';
 
 
 @NgModule({
   declarations: [
     CityComponent,
     CountryComponent,
-    CityEditComponent
+    CityEditComponent,
+    CountryEditComponent
   ],
   imports: [
     CommonModule,

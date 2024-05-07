@@ -48,6 +48,23 @@ export class CountryService implements OnInit {
   }
 
 
+  getCountryById(id: number): Observable<Country> {
+    return this.http.get<Country>(environment.baseUrl + 'api/country/' + id);
+  }
+
+  update(country: Country): Observable<Country> {
+    return this.http.put<Country>(environment.baseUrl + 'api/country/update/' + country.id, country);
+  }
+
+  create(country: Country): Observable<Country> {
+    return this.http.post<Country>(environment.baseUrl + 'api/country/create', country);
+  }
+
+  isDuplicateField(country: Country): Observable<any> {
+    return this.http.get(environment.baseUrl + 'api/country/isDuplicateField/' + country.name + '/' + country.iso2 + '/' + country.iso3);
+  }
+
+
 
 
 }

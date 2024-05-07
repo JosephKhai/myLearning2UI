@@ -18,7 +18,7 @@ export class CityService implements OnInit {
   }
 
   getCities(): Observable<City> {
-    return this.http.get<City>(environment.baseUrl + 'api/city');
+    return this.http.get<City>(environment.baseUrl + 'api/city/getall');
   }
 
   getData(
@@ -45,7 +45,7 @@ export class CityService implements OnInit {
 
   }
 
-  getById(id: number): Observable<City> {
+  getCityById(id: number): Observable<City> {
     return this.http.get<City>(environment.baseUrl + 'api/city/' + id);
   }
   
