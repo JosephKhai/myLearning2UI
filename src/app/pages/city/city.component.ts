@@ -3,7 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { error } from 'console';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { City } from 'src/app/interface/City';
 import { CityService } from 'src/app/services/city.service';
 
@@ -26,6 +26,7 @@ export class CityComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  filterTextChanged: Subject<string> = new Subject<string>();
 
   constructor(private cityService: CityService) { }
 
@@ -40,6 +41,17 @@ export class CityComponent implements OnInit, OnDestroy {
 
     this.loadData('');
 
+  }
+
+  onFilterTextChanged(query: string): void {
+
+    if(this.filterTextChanged.observers.length === 0){
+      this.filterTextChanged.pipe(debounceTime(1000), distinctUntilChanged()).subscribe(x => {
+        this.loadData(x);
+      });
+    }
+
+    this.filterTextChanged.next(query);
   }
 
   loadData(query: string) {

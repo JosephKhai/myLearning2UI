@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -60,8 +61,13 @@ export class CountryService implements OnInit {
     return this.http.post<Country>(environment.baseUrl + 'api/country/create', country);
   }
 
-  isDuplicateField(country: Country): Observable<any> {
-    return this.http.get(environment.baseUrl + 'api/country/isDuplicateField/' + country.name + '/' + country.iso2 + '/' + country.iso3);
+  isDuplicateField(countryId: string, fieldName: string, fieldValue: string): Observable<any> {
+    var params = new HttpParams()
+        .set("countryId", countryId.toString())
+        .set("fieldName", fieldName)
+        .set("fieldValue", fieldValue);
+    
+    return this.http.post<boolean>(environment.baseUrl + 'api/country/IsDuplicateField', null, {params});
   }
 
 

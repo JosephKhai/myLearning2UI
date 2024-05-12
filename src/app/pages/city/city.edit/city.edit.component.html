@@ -41,7 +41,7 @@
 
         </mat-form-field>
 
-        <button mat-flat-button color="primary" type="submit">
+        <button mat-flat-button color="primary" [disabled]="!this.form.valid" type="submit">
             {{this.id ? "Save" : "Create"}}
         </button>
         <button mat-flat-button color="secondary" [routerLink]="['/cities']">
